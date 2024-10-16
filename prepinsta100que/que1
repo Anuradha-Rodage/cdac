@@ -1,5 +1,5 @@
 //Number is Positive or Negative
-class positiveOrnegative
+class que1
 {
   public static void main (String[]args)
   {
