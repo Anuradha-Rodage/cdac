@@ -1,0 +1,66 @@
+que1:Write a query that lists each order number followed by the name of the customer 
+who made the order. 
+select o.onum  ,c.cname from orders o,customers c where  o.cnum=c.cnum;
++------+----------+
+| onum | cname    |
++------+----------+
+| 3003 | Hoffman  |
+| 3002 | Pereira  |
+| 3005 | Liu      |
+| 3006 | cisneros |
+| 3009 | Giovanni |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3010 | Grass    |
+| 3011 | Clemens  |
++------+----------+
+9 rows in set (0.01 sec)
+2) Write a query that gives the names of both the salesperson and the customer for 
+each order along with the order number. 
+ select c.cname ,s.sname,o.onum  from orders o join customers c on o.snum=c.snum join salespeople s on o.snum = s.snum ;
++----------+---------+------+
+| cname    | sname   | onum |
++----------+---------+------+
+| Clemens  | Peel    | 3003 |
+| Hoffman  | Peel    | 3003 |
+| Pereira  | Motika  | 3002 |
+| Grass    | Serres  | 3005 |
+| Liu      | Serres  | 3005 |
+| cisneros | Rifkin  | 3006 |
+| Giovanni | Axelrod | 3009 |
+| Grass    | Serres  | 3007 |
+| Liu      | Serres  | 3007 |
+| Clemens  | Peel    | 3008 |
+| Hoffman  | Peel    | 3008 |
+| Grass    | Serres  | 3010 |
+| Liu      | Serres  | 3010 |
+| Clemens  | Peel    | 3011 |
+| Hoffman  | Peel    | 3011 |
++----------+---------+------+
+
+sa
+3) Write a query that produces all customers serviced by salespeople with a 
+commission above 12%. Output the customer’s name, the salesperson’s name, 
+and the salesperson’s rate of commission. 
+select 
+> select c.cname,s.sname,s.comm from salespeople s join customers c on s.snum=c.snum where s.comm>0.12;
++----------+--------+------+
+| cname    | sname  | comm |
++----------+--------+------+
+| Liu      | Serres | 0.13 |
+| Grass    | Serres | 0.13 |
+| cisneros | Rifkin | 0.15 |
+| Pereira  | Motika |   11 |
++----------+--------+------+
+4 rows in set (0.00 sec)
+4)select c.cname,s.sname,(o.amt*comm) commition from orders o join customers c on o.cnum=c.cnum
+    -> join salespeople s on s.snum=o.snum where rating>100;
++----------+---------+--------------------+
+| cname    | sname   | commition          |
++----------+---------+--------------------+
+| Grass    | Serres  | 170.29348740601563 |
+| Grass    | Serres  |  9.847499638795853 |
+| Liu      | Serres  |  670.8585007836809 |
+| cisneros | Rifkin  |   164.724011672497 |
+| Giovanni | Axelrod |  171.3230005997866 |
++----------+---------+--------------------+
