@@ -1,0 +1,111 @@
+ create table SALESPEOPLE(Snum int(4),Sname varchar(10),City varchar(10),Comm float);
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> insert into salespeople values(1001,'Peel','London',.12);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salespeople values(1002,'Serres','San Jose',.13);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salespeople values(1003,'Motika','London',.11);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salespeople values(1004,'Rifkin','Barcelona',.15);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salespeople values(1007,'Rifkin','Barcelona',.15);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salespeople values(1003,'Axelrod','New York',.10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> update salespeople set snum=1004 where sname='motika';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> delete from salespeople where snum=1004,sname='rifkin';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',sname='rifkin'' at line 1
+mysql> delete from salespeople where snum=1004;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> select * from salespeople;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  |  0.1 |
++------+---------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> insert into salespeople values(1004,'Motika','London',011);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from salespeople;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  |  0.1 |
+| 1004 | Motika  | London    |   11 |
++------+---------+-----------+------+
+5 rows in set (0.00 sec)
+**********************************************************************
+que-2
+mysql> create table CUSTOMERS(Cnum int(4),Cname varchar(10),City varchar(10),Rating int(4),Snum int(4));
+Query OK, 0 rows affected, 3 warnings (0.05 sec)
+
+mysql> insert into customers values(2001,'Hoffman','London',100,1001);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into customers values(2002,'Giovanni','Rome',200,1003);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customers values(2003,'Liu','San Jose',200,1002);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customers values(2004,'Grass','Berlin',300,1002);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customers values(2006,'Clemens','London',100,1001);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customers values(2008,'cisneros','San Jose',300,1007);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customers values(2007,'Pereira','Rome',100,1004);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from customers;
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+******************************************************************************
+que3--
+
+mysql> select *from orders;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+9 rows in set (0.00 sec)
